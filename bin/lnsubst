@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Purpose of this script is to substitute symbolic links with their targets
+# Copyright (c) 2011 Oleksand Goldobin
+
+
+SCRIPT_NAME="lnsubst"
+USAGE="Usage: $SCRIPT_NAME [filename, dirname or mask]"
+
+if [ -z "$1" ]; then
+    echo $USAGE
+    exit 0
+fi
+
+substitute_link() {
+     target=$(readlink "$f")
+     if [ -z "$target" ]; then
+	 echo "$SCRIPT_NAME: object \"$1\" is not a symbolic link" 
+     else
+	 if [[ ! ( -w "$1" && -r "$target" ) ]]; then
+	     echo "$SCRIPT_NAME: you have no permission to remove link \"$1\" or read link target \"$target\""
+	 else
+	     rm "$1"
+	     if [ -w "$target" ]; then
+		 mv "$target" "./$1"
+	     else
+		 cp "$target" "./$1"
+	     fi
+	     echo "$SCRIPT_NAME: link \"$1\" replaced with \"$target\""
+	 fi	   
+     fi
+}
+
+for f in "$@"
+do
+    substitute_link "$f"
+done
+
+

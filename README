@@ -1,0 +1,5 @@
+lnsubst (Link Substitute)
+
+Purpose of this script is to substitute symbolic links with their targets                                                                                                                                        
+
+Usage: $SCRIPT_NAME [filename, dirname or mask]
