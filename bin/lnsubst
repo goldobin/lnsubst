@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Purpose of this script is to substitute symbolic links with their targets
-# Copyright (c) 2011 Oleksand Goldobin
+# Copyright (c) 2011 Oleksandr Goldobin
 
 
 SCRIPT_NAME="lnsubst"
