@@ -42,7 +42,7 @@ substitute_link() {
 
 for f in "$@"
 do
-    f=$(remove_trailing_slash $f)
+    f=$(remove_trailing_slash "$f")
     substitute_link "$f"
 done
 
